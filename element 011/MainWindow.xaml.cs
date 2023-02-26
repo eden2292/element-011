@@ -32,6 +32,7 @@ namespace element_011
         public partial class MainWindow : Window
     {
         private String xmlBookFilePath => "BookInventory.xml";
+        private String xmlUserFilePath => "UserList.xml";
         public XmlDocument XmlDocument { get; private set; }
 
         public MainWindow()
@@ -174,6 +175,29 @@ namespace element_011
         private void btn(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void btnAccess_Click(object sender, RoutedEventArgs e)
+        {
+            XmlDocument xmlDocument = new XmlDocument();
+            xmlDocument.Load(xmlUserFilePath);
+            XmlNodeList xmlNodeList = xmlDocument.DocumentElement.SelectNodes("/catalog/User");
+
+            XmlNode userNo = userNo.SelectSingleNode("UserID");
+
+            if(txtUserId.Text == userNo.InnerText)
+            {
+                XmlNode tag = tag.SelectSingleNode("Tag");
+
+                if(tag.InnerText == "Staff")
+                {
+                    tabControl.SelectedItem = tabStaffHPage;
+                }
+                else if(tag.InnerText == "Member");
+                {
+                    tabControl.SelectedItem = tabUserHPage;
+                }
+            }
         }
     }
     }

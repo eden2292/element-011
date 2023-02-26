@@ -127,7 +127,7 @@
                 <TextBlock x:Name="TxtLogIn" Height="56" Margin="171,66,171,0" TextWrapping="Wrap" Text="Log In" VerticalAlignment="Top" FontFamily="Global User Interface" FontSize="48" FontWeight="Bold"/>
                 <TextBlock x:Name="txtInfo" Height="23" Margin="187,127,187,0" TextWrapping="Wrap" Text="Enter user ID " VerticalAlignment="Top" FontFamily="Global User Interface" FontSize="20" FontWeight="Light"/>
                 <TextBox x:Name="txtUserId" Height="26" Margin="122,160,122,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Global User Interface" FontSize="20" FontWeight="Light" FontStyle="Italic"/>
-                <Button x:Name="btnAccess" Content="Access Library" Height="44" Margin="187,210,187,0" VerticalAlignment="Top" FontFamily="Global User Interface" FontSize="20" Style="{DynamicResource Roundedbutton}"/>
+                <Button x:Name="btnAccess" Content="Access Library" Height="44" Margin="187,210,187,0" VerticalAlignment="Top" FontFamily="Global User Interface" FontSize="20" Style="{DynamicResource Roundedbutton}" Click="btnAccess_Click"/>
             </Grid>
         </TabItem>
         <TabItem x:Name="tabUserHPage" Header="UserHPage">
