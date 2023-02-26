@@ -3,14 +3,14 @@
   <User>
     <UserID>44971888</UserID>
     <Name>Joe Bloggs</Name>
-    <Email>JoeBloggs123@outlook.com</ISBN>
+    <Email>JoeBloggs123@outlook.com</Email>
     <Telephone>01354788990 </Telephone>
 	<Tag>Member</Tag>
   </User>
   <User>
 	<UserID>22351381</UserID>
 	<Name>Rachel Lee</Name>
-	<Email>RLee@Library.gov.uk</Email.
+	<Email>RLee@Library.gov.uk</Email>
 	<Telephone>01354123667</Telephone>
 	<Tag>Staff</Tag>
   </User>

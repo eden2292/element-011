@@ -193,10 +193,14 @@ namespace element_011
                 {
                     tabControl.SelectedItem = tabStaffHPage;
                 }
-                else if(tag.InnerText == "Member");
+                else if(tag.InnerText == "Member")
                 {
                     tabControl.SelectedItem = tabUserHPage;
                 }
+            }
+            else if(txtUserId.Text != userNo.InnerText)
+            {
+                MessageBox.Show("ID number does not match our records");
             }
         }
     }
