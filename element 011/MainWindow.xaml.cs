@@ -183,26 +183,29 @@ namespace element_011
             xmlDocument.Load(xmlUserFilePath);
             XmlNodeList xmlNodeList = xmlDocument.DocumentElement.SelectNodes("/catalog/User");
 
-            XmlNode userNo = userNo.SelectSingleNode("UserID");
 
-            if(txtUserId.Text == userNo.InnerText)
+            foreach (XmlNode xmlNode in xmlNodeList)
             {
-                XmlNode tag = tag.SelectSingleNode("Tag");
+                XmlNode userNo = xmlNode.SelectSingleNode("UserID");
 
-                if(tag.InnerText == "Staff")
-                {
-                    tabControl.SelectedItem = tabStaffHPage;
+                if (txtUserId.Text == userNo.InnerText)
+                 {
+                     XmlNode tag = xmlNode.SelectSingleNode("Tag");
+
+                    if(tag.InnerText == "Staff")
+                    {
+                        tabControl.SelectedItem = tabStaffHPage;
+                    }
+                    else if(tag.InnerText == "Member")
+                    {
+                        tabControl.SelectedItem = tabUserHPage;
+                    }
                 }
-                else if(tag.InnerText == "Member")
+                else if(txtUserId.Text != userNo.InnerText)
                 {
-                    tabControl.SelectedItem = tabUserHPage;
+                    MessageBox.Show("ID number does not match our records");
                 }
             }
-            else if(txtUserId.Text != userNo.InnerText)
-            {
-                MessageBox.Show("ID number does not match our records");
-            }
-        }
     }
     }
 
