@@ -1,17 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Xml;
 
 namespace element_011
@@ -27,12 +15,18 @@ namespace element_011
     }
     public partial class MainWindow : Window
     {
+        #region Variables
         //Variables that can be used in place of file path within xml accessing methods. This means that if the XML file name changes, it only needs to be replaced here. 
         private String xmlBookFilePath => "BookInventory.xml";
         private String xmlUserFilePath => "UserList.xml";
+        //Booleans that will switch to true if the correct value is entered. If it does not change to true, show an error message. 
+        private bool AccessSuccess;
+        private int Checkoutsuccess;
 
-        //Boolean that will switch to true if the correct Id is entered. If it does not change to true, show an error message in the log in control if no node matches the user ID entered. 
-        public bool AccessSuccess;
+
+
+        #endregion
+
 
         public MainWindow()
         {
@@ -122,12 +116,31 @@ namespace element_011
         {
             tabControl.SelectedItem = tabReports;
         }
+
+        //move to fines tab
+        private void btnFines_Click(object sender, RoutedEventArgs e)
+        {
+            tabControl.SelectedItem = tabFines;
+        }
+
+        //move to member management tab
+        private void btnMngMmbrs_Click(object sender, RoutedEventArgs e)
+        {
+            tabControl.SelectedItem = tabMngMmbrs;
+        }
+
+        //move to overdue books tab. 
+        private void btnOverdue_Click(object sender, RoutedEventArgs e)
+        {
+            tabControl.SelectedItem = tabOverdue;
+        }
         #endregion
 
         #region End_tabcontrols
         //returns to log in page
         private void btnLogOut_Click(object sender, RoutedEventArgs e)
         {
+            txtUserId.Text = String.Empty;
             tabControl.SelectedItem = tabLogIn;
         }
 
@@ -180,6 +193,16 @@ namespace element_011
             //save the document with the appended information. 
             doc.Save(xmlBookFilePath);
 
+            //show dialogue box when completed. 
+            MessageBox.Show("Added successfully");
+
+            //empty all information entered on button click ready for new addition
+            txtTitleAddRem.Text = String.Empty;
+            txtAuthorAddRem.Text = String.Empty;
+            txtISBNAddRem.Text = String.Empty;
+            txtDescAddRem.Text = String.Empty;
+
+
         }
 
         //remove books from the xml document that hold information - CURRENT ISSUE - if multiple books with the same information is held, then all will be removed. 
@@ -208,10 +231,18 @@ namespace element_011
 
                 xmlDocument.Save(xmlBookFilePath);
 
+                //show dialogue box when completed. 
+                MessageBox.Show("Removed successfully");
+
+                //empty all information entered on button click ready for new addition
+                txtTitleAddRem.Text = String.Empty;
+                txtAuthorAddRem.Text = String.Empty;
+                txtISBNAddRem.Text = String.Empty;
+                txtDescAddRem.Text = String.Empty;
+
             }
 
         }
-
 
         //Load a report that shows all information in the XML file in an easily readable format. CHANGE - make searchable based on parameters selected by the user. 
         private void btnLoad_Click(object sender, RoutedEventArgs e)
@@ -233,5 +264,42 @@ namespace element_011
             }
         }
 
+        //Checking out a book.
+        private void btnChckOutCnfm_Click(object sender, RoutedEventArgs e)
+        {
+            XmlDocument xmlDocument = new XmlDocument();
+            xmlDocument.Load(xmlBookFilePath);
+            XmlNodeList xmlNodeList = xmlDocument.DocumentElement.SelectNodes("/catalog/Book");
+
+            //Create a variable "now", which takes the current date and time, then add a month to it to get the "due" variable. 
+            var now = DateTime.Now;
+            var due = now.AddMonths(1);
+
+            foreach (XmlNode xmlNode in xmlNodeList)
+            {
+                //apply each ISBN in the XML file to the variable then check it against the entered ISBN number
+                XmlNode desiredBook = xmlNode.SelectSingleNode("ISBN");
+
+                if(desiredBook.InnerText == txtCheckout.Text)
+                {
+                    XmlElement duedate = xmlDocument.CreateElement("DueDate");
+                    duedate.InnerText = Convert.ToString(due);
+
+                    MessageBox.Show("Successfully checked out!");
+                    txtCheckout.Text = String.Empty;
+                    Checkoutsuccess += 1;
+
+                }
+
+                if(Checkoutsuccess < 1)
+                {
+                    MessageBox.Show("Please check the ISBN then try again");
+                    Checkoutsuccess -= 1;
+                }
+                
+            }
+
+            xmlDocument.Save(xmlBookFilePath);
+        }
     }
 }

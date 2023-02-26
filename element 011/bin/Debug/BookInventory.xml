@@ -6,4 +6,20 @@
     <ISBN>124568</ISBN>
     <Description>stuff </Description>
   </Book>
+  <Book>
+    <Title>
+    </Title>
+    <Author>
+    </Author>
+    <ISBN>
+    </ISBN>
+    <Description>
+    </Description>
+  </Book>
+  <Book>
+    <Title>I</Title>
+    <Author>Like To</Author>
+    <ISBN>read</ISBN>
+    <Description>books</Description>
+  </Book>
 </catalog>

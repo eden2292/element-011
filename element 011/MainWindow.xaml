@@ -133,8 +133,8 @@
         <TabItem x:Name="tabUserHPage" Header="UserHPage">
             <Grid Background="#E6FFFF" Margin="0,-2,0,2">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="131*"/>
-                    <ColumnDefinition Width="111*"/>
+                    <ColumnDefinition Width="135*"/>
+                    <ColumnDefinition Width="107*"/>
                     <ColumnDefinition Width="0*"/>
                 </Grid.ColumnDefinitions>
                 <Button x:Name="btnCheckout" Content="Check Out" HorizontalAlignment="Left" Height="46" Margin="77,56,0,0" VerticalAlignment="Top" Width="116" FontFamily="Global User Interface" FontSize="20" Style="{DynamicResource Roundedbutton}" Click="btnCheckout_Click"/>
@@ -148,10 +148,10 @@
         <TabItem x:Name="tabStaffHPage" Header="StaffHpage">
             <Grid Background="#E6FFFF">
                 <Button x:Name="btnMngBks" Content="Manage Books" HorizontalAlignment="Left" Height="46" Margin="77,56,0,0" VerticalAlignment="Top" Width="116" FontFamily="Global User Interface" FontSize="20" Style="{DynamicResource Roundedbutton}" Click="btnMngBks_Click"/>
-                <Button x:Name="btnMngMmbrs" Content="Manage Members" HorizontalAlignment="Left" Height="46" Margin="77,175,0,0" VerticalAlignment="Top" Width="116" FontFamily="Global User Interface" FontSize="20" Style="{DynamicResource Roundedbutton}"/>
-                <Button x:Name="btnOverdue" Content="Overdue Books" HorizontalAlignment="Left" Height="46" Margin="77,296,0,0" VerticalAlignment="Top" Width="116" FontFamily="Global User Interface" FontSize="20" Style="{DynamicResource Roundedbutton}"/>
-                <Button x:Name="btnFines" Content="Fines" HorizontalAlignment="Left" Height="46" Margin="294,56,0,0" VerticalAlignment="Top" Width="116" FontFamily="Global User Interface" FontSize="20" Style="{DynamicResource Roundedbutton}"/>
-                <Button x:Name="btnReports" Content="Reports" HorizontalAlignment="Left" Height="46" Margin="294,175,0,0" VerticalAlignment="Top" Width="116" FontFamily="Global User Interface" FontSize="20" Style="{DynamicResource Roundedbutton}"/>
+                <Button x:Name="btnMngMmbrs" Content="Manage Members" HorizontalAlignment="Left" Height="46" Margin="77,175,0,0" VerticalAlignment="Top" Width="116" FontFamily="Global User Interface" FontSize="20" Style="{DynamicResource Roundedbutton}" Click="btnMngMmbrs_Click"/>
+                <Button x:Name="btnOverdue" Content="Overdue Books" HorizontalAlignment="Left" Height="46" Margin="77,296,0,0" VerticalAlignment="Top" Width="116" FontFamily="Global User Interface" FontSize="20" Style="{DynamicResource Roundedbutton}" Click="btnOverdue_Click"/>
+                <Button x:Name="btnFines" Content="Fines" HorizontalAlignment="Left" Height="46" Margin="294,56,0,0" VerticalAlignment="Top" Width="116" FontFamily="Global User Interface" FontSize="20" Style="{DynamicResource Roundedbutton}" Click="btnFines_Click"/>
+                <Button x:Name="btnReports" Content="Reports" HorizontalAlignment="Left" Height="46" Margin="294,175,0,0" VerticalAlignment="Top" Width="116" FontFamily="Global User Interface" FontSize="20" Style="{DynamicResource Roundedbutton}" Click="btnReports_Click"/>
                 <Button x:Name="btnStaffLogOut" Content="Log Out" HorizontalAlignment="Left" Height="46" Margin="294,296,0,0" VerticalAlignment="Top" Width="116" FontFamily="Global User Interface" FontSize="20" Style="{DynamicResource Roundedbutton}" Click="btnLogOut_Click"/>
             </Grid>
         </TabItem>
@@ -160,7 +160,7 @@
                 <TextBlock x:Name="txtCheckout" Height="53" Margin="126,55,126,0" TextWrapping="Wrap" Text="Check Out" VerticalAlignment="Top" FontFamily="Global User Interface" FontSize="48" FontWeight="DemiBold"/>
                 <TextBlock x:Name="txtcheckoutInfo" Margin="126,113,131,0" TextWrapping="Wrap" Text="Scan or enter ISBN number" VerticalAlignment="Top" Height="30" FontFamily="Global User Interface" FontSize="20" FontWeight="Light" FontStyle="Italic"/>
                 <TextBox x:Name="txtCheckoutISBN" Height="33" Margin="126,170,131,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontFamily="Global User Interface" FontSize="20" FontWeight="Light" FontStyle="Italic"/>
-                <Button x:Name="btnChckOutCnfm" Content="Confirm" Height="46" Margin="183,241,185,0" VerticalAlignment="Top" FontFamily="Global User Interface" FontSize="20" Style="{DynamicResource Roundedbutton}"/>
+                <Button x:Name="btnChckOutCnfm" Content="Confirm" Height="46" Margin="183,241,185,0" VerticalAlignment="Top" FontFamily="Global User Interface" FontSize="20" Style="{DynamicResource Roundedbutton}" Click="btnChckOutCnfm_Click"/>
                 <Button x:Name="btnCancel_Checkout" Content="Cancel" Height="38" Margin="183,312,185,0" VerticalAlignment="Top" FontFamily ="Global User Interface" FontSize="18" Style="{DynamicResource SmallRoundedButton}" Click="btnCancelUser_Click"/>
 
             </Grid>
@@ -216,7 +216,7 @@
                 <TextBlock HorizontalAlignment="Left" Margin="151,172,0,0" TextWrapping="Wrap" Text="Author" VerticalAlignment="Top" FontFamily="Global USer Interface" FontSize="14" FontWeight="Light"/>
                 <TextBlock HorizontalAlignment="Left" Margin="151,200,0,0" TextWrapping="Wrap" Text="ISBN" VerticalAlignment="Top" FontFamily="Global USer Interface" FontSize="14" FontWeight="Light"/>
                 <TextBlock HorizontalAlignment="Left" Margin="151,228,0,0" TextWrapping="Wrap" Text="Description" VerticalAlignment="Top" FontFamily="Global USer Interface" FontSize="14" FontWeight="Light"/>
-                <Button x:Name="btnCancel_Checkout_Copy1" Content="Cancel" Height="20" Width="75" Margin="328,339,81,0" VerticalAlignment="Top" FontFamily ="Global User Interface"  Style="{DynamicResource SmallRoundedButton}" Click="btnCancelStaff_Click"/>
+                <Button x:Name="btnCancel_Manage" Content="Cancel" Height="20" Width="75" Margin="328,339,81,0" VerticalAlignment="Top" FontFamily ="Global User Interface"  Style="{DynamicResource SmallRoundedButton}" Click="btnCancelStaff_Click"/>
 
             </Grid>
         </TabItem>
@@ -224,7 +224,22 @@
             <Grid Background="#e6ffff">
                 <Button x:Name="btnLoad" Content="Load" HorizontalAlignment="Left" Margin="148,299,0,0" VerticalAlignment="Top" Width="75" Style="{DynamicResource SmallRoundedButton}" Click="btnLoad_Click"/>
                 <TextBox x:Name="tbBookReport" HorizontalAlignment="Left" Height="220" Margin="37,33,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="423" VerticalScrollBarVisibility="Auto" IsEnabled="False"  />
-                <Button x:Name="btnCancel_Checkout_Copy" Content="Cancel" Height="20" Width="75" Margin="265,299,134,0" VerticalAlignment="Top" FontFamily ="Global User Interface"  Style="{DynamicResource SmallRoundedButton}" Click="btnCancelStaff_Click"/>
+                <Button x:Name="btnCancel_Reports" Content="Cancel" Height="20" Width="75" Margin="265,299,134,0" VerticalAlignment="Top" FontFamily ="Global User Interface"  Style="{DynamicResource SmallRoundedButton}" Click="btnCancelStaff_Click"/>
+            </Grid>
+        </TabItem>
+        <TabItem x:Name="tabFines" Header="Fines">
+            <Grid Background="#e6ffff">
+                <Button x:Name="btnCancel_Fines" Content="Cancel" Height="20" Width="75" Margin="265,299,134,0" VerticalAlignment="Top" FontFamily ="Global User Interface"  Style="{DynamicResource SmallRoundedButton}" Click="btnCancelStaff_Click"/>
+            </Grid>
+        </TabItem>
+        <TabItem x:Name="tabMngMmbrs" Header="MngMmbrs">
+            <Grid Background="#e6ffff">
+                <Button x:Name="btnCancel_MngMmbrs" Content="Cancel" Height="20" Width="75" Margin="265,299,134,0" VerticalAlignment="Top" FontFamily ="Global User Interface"  Style="{DynamicResource SmallRoundedButton}" Click="btnCancelStaff_Click"/>
+            </Grid>
+        </TabItem>
+        <TabItem x:Name="tabOverdue" Header="Overdue">
+            <Grid Background="#e6ffff">
+                <Button x:Name="btnCancel_Overdue" Content="Cancel" Height="20" Width="75" Margin="265,299,134,0" VerticalAlignment="Top" FontFamily ="Global User Interface"  Style="{DynamicResource SmallRoundedButton}" Click="btnCancelStaff_Click"/>
             </Grid>
         </TabItem>
 
