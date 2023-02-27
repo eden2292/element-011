@@ -22,4 +22,10 @@
     <ISBN>read</ISBN>
     <Description>books</Description>
   </Book>
+  <Book>
+    <Title>TEST</Title>
+    <Author>TEST</Author>
+    <ISBN>12345</ISBN>
+    <Description>TEST</Description>
+  </Book>
 </catalog>

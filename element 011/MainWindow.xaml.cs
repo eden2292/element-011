@@ -12,6 +12,7 @@ namespace element_011
         public String title;
         public String ISBN;
         public String description;
+        public String dueDate;
     }
     public partial class MainWindow : Window
     {
@@ -21,7 +22,7 @@ namespace element_011
         private String xmlUserFilePath => "UserList.xml";
         //Booleans that will switch to true if the correct value is entered. If it does not change to true, show an error message. 
         private bool AccessSuccess;
-        private int Checkoutsuccess;
+        private bool Checkoutsuccess;
 
 
 
@@ -205,7 +206,7 @@ namespace element_011
 
         }
 
-        //remove books from the xml document that hold information - CURRENT ISSUE - if multiple books with the same information is held, then all will be removed. 
+        //remove books from the xml document that hold information - CURRENT ISSUES - if multiple books with the same information are held, then all will be removed. Node information is removed, nodes remain. 
         private void btnRemove_Click(object sender, RoutedEventArgs e)
         {
             XmlDocument xmlDocument = new XmlDocument();
@@ -267,6 +268,8 @@ namespace element_011
         //Checking out a book.
         private void btnChckOutCnfm_Click(object sender, RoutedEventArgs e)
         {
+            Book newBook = new Book();
+          
             XmlDocument xmlDocument = new XmlDocument();
             xmlDocument.Load(xmlBookFilePath);
             XmlNodeList xmlNodeList = xmlDocument.DocumentElement.SelectNodes("/catalog/Book");
@@ -275,31 +278,39 @@ namespace element_011
             var now = DateTime.Now;
             var due = now.AddMonths(1);
 
+            newBook.dueDate = Convert.ToString(due);
+
             foreach (XmlNode xmlNode in xmlNodeList)
             {
                 //apply each ISBN in the XML file to the variable then check it against the entered ISBN number
                 XmlNode desiredBook = xmlNode.SelectSingleNode("ISBN");
 
-                if(desiredBook.InnerText == txtCheckout.Text)
+                if(txtCheckout.Text == desiredBook.InnerText)
                 {
                     XmlElement duedate = xmlDocument.CreateElement("DueDate");
-                    duedate.InnerText = Convert.ToString(due);
+                    duedate.InnerText = newBook.dueDate;
 
-                    MessageBox.Show("Successfully checked out!");
+                   duedate.AppendChild(duedate);
+
+                    MessageBox.Show("Successfully checked out! \n Due date is " + due);
                     txtCheckout.Text = String.Empty;
-                    Checkoutsuccess += 1;
+                    Checkoutsuccess = true;
 
                 }
 
-                if(Checkoutsuccess < 1)
-                {
-                    MessageBox.Show("Please check the ISBN then try again");
-                    Checkoutsuccess -= 1;
-                }
-                
+            }
+            if (Checkoutsuccess != true)
+            {
+                MessageBox.Show("Please check the ISBN then try again");
+                Checkoutsuccess = false;
             }
 
             xmlDocument.Save(xmlBookFilePath);
+        }
+
+        private void btnReturnCnfm_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

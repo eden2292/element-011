@@ -170,7 +170,7 @@
                 <TextBlock x:Name="txtReturn" Height="53" Margin="168,53,168,0" TextWrapping="Wrap" Text="Return" VerticalAlignment="Top" FontFamily="Global User Interface" FontSize="48" FontWeight="DemiBold"/>
                 <TextBlock x:Name="txtReturnInfo" Margin="126,113,131,0" TextWrapping="Wrap" Text="Scan or enter ISBN number" VerticalAlignment="Top" Height="30" FontFamily="Global User Interface" FontSize="20" FontWeight="Light" FontStyle="Italic"/>
                 <TextBox x:Name="txtReturnISBN" Height="33" Margin="126,170,131,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontFamily="Global User Interface" FontSize="20" FontWeight="Light" FontStyle="Italic"/>
-                <Button x:Name="btnReturnCnfm" Content="Confirm" Height="46" Margin="183,241,185,0" VerticalAlignment="Top" FontFamily="Global User Interface" FontSize="20" Style="{DynamicResource Roundedbutton}"/>
+                <Button x:Name="btnReturnCnfm" Content="Confirm" Height="46" Margin="183,241,185,0" VerticalAlignment="Top" FontFamily="Global User Interface" FontSize="20" Style="{DynamicResource Roundedbutton}" Click="btnReturnCnfm_Click"/>
                 <Button x:Name="btnCancel_Return" Content="Cancel" Height="38" Margin="183,312,185,0" VerticalAlignment="Top" FontFamily ="Global User Interface" FontSize="18" Style="{DynamicResource SmallRoundedButton}" Click="btnCancelUser_Click"/>
             </Grid>
         </TabItem>
